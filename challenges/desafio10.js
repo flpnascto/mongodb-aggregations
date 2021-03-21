@@ -16,9 +16,11 @@ db.trips.aggregate([
       },
     },
   },
+  { $sort: { avgTime: 1 } },
   {
     $project: {
-      tipo: "$id",
+      _id: 0,
+      tipo: "$_id",
       duracaoMedia: { $round: ["$avgTime", 2] },
     },
   },
